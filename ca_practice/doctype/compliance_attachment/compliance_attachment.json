@@ -1,0 +1,30 @@
+{
+    "name": "Compliance Attachment",
+    "doctype": "DocField",
+    "module": "CA Practice",
+    "istable": 1,
+    "fields": [
+        {
+            "fieldname": "attachment_type",
+            "label": "Attachment Type",
+            "fieldtype": "Select",
+            "options": "Form\nReceipt\nAcknowledgment\nSupporting Document\nOther"
+        },
+        {
+            "fieldname": "file_url",
+            "label": "File URL",
+            "fieldtype": "Attach"
+        },
+        {
+            "fieldname": "description",
+            "label": "Description",
+            "fieldtype": "Small Text"
+        },
+        {
+            "fieldname": "upload_date",
+            "label": "Upload Date",
+            "fieldtype": "Date",
+            "default": "Today"
+        }
+    ]
+}

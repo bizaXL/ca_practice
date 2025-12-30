@@ -1,0 +1,44 @@
+{
+    "name": "CA Client Director",
+    "doctype": "DocField",
+    "module": "CA Practice",
+    "istable": 1,
+    "fields": [
+        {
+            "fieldname": "director_name",
+            "label": "Director Name",
+            "fieldtype": "Data",
+            "reqd": 1
+        },
+        {
+            "fieldname": "din",
+            "label": "DIN",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "pan",
+            "label": "PAN",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "address",
+            "label": "Address",
+            "fieldtype": "Small Text"
+        },
+        {
+            "fieldname": "phone",
+            "label": "Phone",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "email",
+            "label": "Email",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "appointment_date",
+            "label": "Appointment Date",
+            "fieldtype": "Date"
+        }
+    ]
+}

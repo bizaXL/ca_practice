@@ -1,0 +1,124 @@
+{
+    "name": "Compliance",
+    "doctype": "DocType",
+    "module": "CA Practice",
+    "is_submittable": 0,
+    "allow_auto_repeat": 1,
+    "fields": [
+        {
+            "fieldname": "client",
+            "label": "Client",
+            "fieldtype": "Link",
+            "options": "CA Client",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "client_name",
+            "label": "Client Name",
+            "fieldtype": "Data",
+            "fetch_from": "client.client_name",
+            "read_only": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "compliance_type",
+            "label": "Compliance Type",
+            "fieldtype": "Select",
+            "options": "GSTR-1\nGSTR-3B\nGSTR-9\nGSTR-9C\nIncome Tax Return\nTDS Return (24Q)\nTDS Return (26Q)\nTDS Return (27Q)\nTDS Return (27EQ)\nROC Form AOC-4\nROC Form MGT-7\nROC Form DIR-3 KYC\nPF Return\nESI Return\nProfessional Tax\nAdvance Tax\nTax Audit\nTransfer Pricing\nOther",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "description",
+            "label": "Description",
+            "fieldtype": "Text",
+            "reqd": 1
+        },
+        {
+            "fieldname": "period",
+            "label": "Period",
+            "fieldtype": "Data",
+            "description": "e.g., April 2024, FY 2023-24, Q1 2024"
+        },
+        {
+            "fieldname": "due_date",
+            "label": "Due Date",
+            "fieldtype": "Date",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "actual_submission_date",
+            "label": "Actual Submission Date",
+            "fieldtype": "Date"
+        },
+        {
+            "fieldname": "extended_due_date",
+            "label": "Extended Due Date",
+            "fieldtype": "Date"
+        },
+        {
+            "fieldname": "status",
+            "label": "Status",
+            "fieldtype": "Select",
+            "options": "Pending\nIn Progress\nSubmitted\nExtended\nOverdue\nCompleted\nCancelled",
+            "default": "Pending",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "responsible_person",
+            "label": "Responsible Person",
+            "fieldtype": "Link",
+            "options": "User",
+            "reqd": 1
+        },
+        {
+            "fieldname": "assigned_to",
+            "label": "Assigned To",
+            "fieldtype": "Link",
+            "options": "User"
+        },
+        {
+            "fieldname": "penalty_amount",
+            "label": "Penalty Amount",
+            "fieldtype": "Currency"
+        },
+        {
+            "fieldname": "penalty_paid",
+            "label": "Penalty Paid",
+            "fieldtype": "Check"
+        },
+        {
+            "fieldname": "reference_number",
+            "label": "Reference/ACK No.",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "remarks",
+            "label": "Remarks",
+            "fieldtype": "Small Text"
+        },
+        {
+            "fieldname": "section_attachments",
+            "label": "Attachments",
+            "fieldtype": "Section Break"
+        },
+        {
+            "fieldname": "attachments",
+            "label": "Attachments",
+            "fieldtype": "Table",
+            "options": "Compliance Attachment"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1
+        }
+    ]
+}

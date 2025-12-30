@@ -1,0 +1,147 @@
+{
+    "name": "CA Client",
+    "doctype": "DocType",
+    "module": "CA Practice",
+    "is_submittable": 0,
+    "istable": 0,
+    "autoname": "field:client_code",
+    "naming_rule": "Expression",
+    "show_title_field_in_link": 1,
+    "title_field": "client_name",
+    "fields": [
+        {
+            "fieldname": "client_code",
+            "label": "Client Code",
+            "fieldtype": "Data",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "client_name",
+            "label": "Client Name",
+            "fieldtype": "Data",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "customer",
+            "label": "Customer",
+            "fieldtype": "Link",
+            "options": "Customer",
+            "reqd": 1,
+            "unique": 1
+        },
+        {
+            "fieldname": "client_type",
+            "label": "Client Type",
+            "fieldtype": "Select",
+            "options": "Individual\nProprietorship\nPartnership\nLLP\nPrivate Limited\nPublic Limited\nTrust\nSociety",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "pan_number",
+            "label": "PAN Number",
+            "fieldtype": "Data",
+            "reqd": 1
+        },
+        {
+            "fieldname": "gstin",
+            "label": "GSTIN",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "tan_number",
+            "label": "TAN Number",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "financial_year_end",
+            "label": "Financial Year End",
+            "fieldtype": "Date",
+            "reqd": 1
+        },
+        {
+            "fieldname": "incorporation_date",
+            "label": "Incorporation/Start Date",
+            "fieldtype": "Date"
+        },
+        {
+            "fieldname": "auditor",
+            "label": "Auditor",
+            "fieldtype": "Link",
+            "options": "User"
+        },
+        {
+            "fieldname": "engagement_partner",
+            "label": "Engagement Partner",
+            "fieldtype": "Link",
+            "options": "User",
+            "reqd": 1
+        },
+        {
+            "fieldname": "billing_contact",
+            "label": "Billing Contact",
+            "fieldtype": "Link",
+            "options": "Contact"
+        },
+        {
+            "fieldname": "section_company",
+            "label": "Company Details",
+            "fieldtype": "Section Break",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "cin_number",
+            "label": "CIN Number",
+            "fieldtype": "Data",
+            "depends_on": "eval:doc.client_type=='Private Limited' || doc.client_type=='Public Limited'"
+        },
+        {
+            "fieldname": "authorized_capital",
+            "label": "Authorized Capital",
+            "fieldtype": "Currency",
+            "depends_on": "eval:doc.client_type=='Private Limited' || doc.client_type=='Public Limited'"
+        },
+        {
+            "fieldname": "column_break_1",
+            "fieldtype": "Column Break"
+        },
+        {
+            "fieldname": "paid_up_capital",
+            "label": "Paid-up Capital",
+            "fieldtype": "Currency",
+            "depends_on": "eval:doc.client_type=='Private Limited' || doc.client_type=='Public Limited'"
+        },
+        {
+            "fieldname": "directors",
+            "label": "Directors",
+            "fieldtype": "Table",
+            "options": "CA Client Director"
+        },
+        {
+            "fieldname": "section_services",
+            "label": "Services Required",
+            "fieldtype": "Section Break",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "service_requirements",
+            "label": "Service Requirements",
+            "fieldtype": "Table",
+            "options": "CA Client Service"
+        }
+    ],
+    "permissions": [
+        {
+            "role": "System Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 1,
+            "export": 1,
+            "print": 1,
+            "email": 1
+        }
+    ]
+}
