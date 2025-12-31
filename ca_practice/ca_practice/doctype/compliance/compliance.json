@@ -110,6 +110,21 @@
             "label": "Attachments",
             "fieldtype": "Table",
             "options": "Compliance Attachment"
+        },
+        {
+            "fieldname": "task_created",
+            "label": "Task Created",
+            "fieldtype": "Check",
+            "hidden": 1,
+            "read_only": 1
+        },
+        {
+            "fieldname": "task_link",
+            "label": "Task Link",
+            "fieldtype": "Link",
+            "options": "Task",
+            "hidden": 1,
+            "read_only": 1
         }
     ],
     "permissions": [
