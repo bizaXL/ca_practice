@@ -1,6 +1,6 @@
 {
     "name": "CA Client Service",
-    "doctype": "DocField",
+    "doctype": "DocType",
     "module": "CA Practice",
     "istable": 1,
     "fields": [

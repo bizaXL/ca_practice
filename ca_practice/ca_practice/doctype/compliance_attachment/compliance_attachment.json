@@ -1,6 +1,6 @@
 {
     "name": "Compliance Attachment",
-    "doctype": "DocField",
+    "doctype": "DocType",
     "module": "CA Practice",
     "istable": 1,
     "fields": [
