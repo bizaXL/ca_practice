@@ -15,7 +15,7 @@ app_include_css = "/assets/ca_practice/css/ca_practice.css"
 scheduler_events = {
     "cron": {
         "0 9 * * *": [
-            "ca_practice.utils.send_daily_reminders"
+            "ca_practice.ca_practice.utils.send_daily_reminders"
         ]
     }
 }
