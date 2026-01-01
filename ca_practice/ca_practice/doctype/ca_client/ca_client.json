@@ -130,6 +130,51 @@
             "label": "Service Requirements",
             "fieldtype": "Table",
             "options": "CA Client Service"
+        },
+        {
+            "fieldname": "section_compliance",
+            "label": "Compliance Details",
+            "fieldtype": "Section Break",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "gst_registration_type",
+            "label": "GST Registration Type",
+            "fieldtype": "Select",
+            "options": "\nRegular\nComposition\nSEZ\nUN Body\nOther"
+        },
+        {
+            "fieldname": "gst_filing_frequency",
+            "label": "GST Filing Frequency",
+            "fieldtype": "Select",
+            "options": "\nMonthly\nQuarterly"
+        },
+        {
+            "fieldname": "tds_applicable",
+            "label": "TDS Applicable",
+            "fieldtype": "Check"
+        },
+        {
+            "fieldname": "audit_required",
+            "label": "Audit Required",
+            "fieldtype": "Check"
+        },
+        {
+            "fieldname": "last_audited_year",
+            "label": "Last Audited Year",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "section_documents",
+            "label": "Documents",
+            "fieldtype": "Section Break",
+            "collapsible": 1
+        },
+        {
+            "fieldname": "documents_attached",
+            "label": "Documents Attached",
+            "fieldtype": "Table",
+            "options": "CA Client Document"
         }
     ],
     "permissions": [
@@ -142,6 +187,27 @@
             "export": 1,
             "print": 1,
             "email": 1
+        },
+        {
+            "role": "Accounts Manager",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 0,
+            "export": 1,
+            "print": 1,
+            "email": 1
+        },
+        {
+            "role": "Auditor",
+            "read": 1,
+            "write": 1,
+            "create": 1,
+            "delete": 0,
+            "export": 1,
+            "print": 1,
+            "email": 1
         }
     ]
 }
+

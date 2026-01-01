@@ -1,0 +1,27 @@
+{
+    "name": "CA Client Document",
+    "doctype": "DocType",
+    "module": "CA Practice",
+    "istable": 1,
+    "editable_grid": 1,
+    "fields": [
+        {
+            "fieldname": "document_name",
+            "label": "Document Name",
+            "fieldtype": "Data",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "attachment",
+            "label": "Attachment",
+            "fieldtype": "Attach"
+        },
+        {
+            "fieldname": "uploaded_on",
+            "label": "Uploaded On",
+            "fieldtype": "Date",
+            "default": "Today"
+        }
+    ]
+}
