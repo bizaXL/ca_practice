@@ -1,0 +1,40 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<div class="py-10">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">{{ title }}</h2>
+    </div>
+    {% if documents %}
+    <div class="overflow-x-auto">
+        <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>{{ _("Document Name") }}</th>
+                    <th>{{ _("Uploaded On") }}</th>
+                    <th>{{ _("Action") }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doc in documents %}
+                <tr>
+                    <td>{{ doc.document_name }}</td>
+                    <td>{{ frappe.utils.format_date(doc.uploaded_on) }}</td>
+                    <td>
+                        {% if doc.attachment %}
+                        <a href="{{ doc.attachment }}" class="btn btn-sm btn-primary" target="_blank">
+                            {{ _("Download") }}
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <div class="text-center p-10 bg-gray-50 rounded">
+        <p class="text-gray-500">{{ _("No documents found.") }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

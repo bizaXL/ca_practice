@@ -1,0 +1,72 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<div class="py-10">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">{{ title }}</h2>
+    </div>
+    {% if client %}
+    <div class="bg-white shadow rounded-lg p-6 border">
+        <h3 class="text-lg font-semibold mb-4">{{ client.client_name }}</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label class="block text-sm font-medium text-gray-500">{{ _("Client Code") }}</label>
+                <p class="mt-1 text-sm text-gray-900">{{ client.client_code }}</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-500">{{ _("Client Type") }}</label>
+                <p class="mt-1 text-sm text-gray-900">{{ client.client_type }}</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-500">{{ _("PAN Number") }}</label>
+                <p class="mt-1 text-sm text-gray-900">{{ client.pan_number }}</p>
+            </div>
+            {% if client.gstin %}
+            <div>
+                <label class="block text-sm font-medium text-gray-500">{{ _("GSTIN") }}</label>
+                <p class="mt-1 text-sm text-gray-900">{{ client.gstin }}</p>
+            </div>
+            {% endif %}
+            {% if client.tan_number %}
+            <div>
+                <label class="block text-sm font-medium text-gray-500">{{ _("TAN Number") }}</label>
+                <p class="mt-1 text-sm text-gray-900">{{ client.tan_number }}</p>
+            </div>
+            {% endif %}
+            <div>
+                <label class="block text-sm font-medium text-gray-500">{{ _("Financial Year End") }}</label>
+                <p class="mt-1 text-sm text-gray-900">{{ frappe.utils.format_date(client.financial_year_end) }}</p>
+            </div>
+        </div>
+        {% if client.directors %}
+        <div class="mt-8">
+            <h4 class="text-md font-semibold mb-3">{{ _("Directors / Partners") }}</h4>
+            <div class="overflow-x-auto">
+                <table class="table w-full text-sm">
+                    <thead>
+                        <tr>
+                            <th>{{ _("Name") }}</th>
+                            <th>{{ _("Designation") }}</th>
+                            <th>{{ _("DIN/PAN") }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in client.directors %}
+                        <tr>
+                            <td>{{ d.director_name }}</td>
+                            <td>{{ d.designation or '-' }}</td>
+                            <td>{{ d.din_pan or '-' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="text-center p-10 bg-gray-50 rounded">
+        <p class="text-gray-500">{{ _("Client profile not found.") }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

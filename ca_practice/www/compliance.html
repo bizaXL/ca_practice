@@ -1,0 +1,42 @@
+{% extends "templates/web.html" %}
+{% block page_content %}
+<div class="py-10">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold">{{ title }}</h2>
+    </div>
+    {% if compliances %}
+        <div class="overflow-x-auto">
+            <table class="table w-full">
+                <thead>
+                    <tr>
+                        <th>{{ _("Compliance Type") }}</th>
+                        <th>{{ _("Period") }}</th>
+                        <th>{{ _("Due Date") }}</th>
+                        <th>{{ _("Status") }}</th>
+                        <th>{{ _("Submitted On") }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in compliances %}
+                    <tr>
+                        <td>{{ item.compliance_type }}</td>
+                        <td>{{ item.period }}</td>
+                        <td>{{ frappe.utils.format_date(item.due_date) }}</td>
+                        <td>
+                            <span class="badge {% if item.status == 'Completed' %}badge-success{% elif item.status == 'Overdue' %}badge-danger{% else %}badge-warning{% endif %}">
+                                {{ item.status }}
+                            </span>
+                        </td>
+                        <td>{{ frappe.utils.format_date(item.actual_submission_date) if item.actual_submission_date else '-' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="text-center p-10 bg-gray-50 rounded">
+            <p class="text-gray-500">{{ _("No compliance records found.") }}</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
