@@ -1,21 +1,30 @@
 {
-    "add_total_row": 0,
-    "columns": [],
-    "disabled": 0,
-    "docstatus": 0,
-    "doctype": "Report",
-    "filters": [],
-    "idx": 0,
-    "is_standard": "Yes",
-    "module": "CA Practice",
-    "name": "Compliance Status Report",
-    "prepared_report": 0,
-    "ref_doctype": "Compliance",
-    "report_name": "Compliance Status Report",
-    "report_type": "Script Report",
-    "roles": [
-        {
-            "role": "System Manager"
-        }
-    ]
+ "add_total_row": 1,
+ "add_translate_data": 0,
+ "columns": [],
+ "creation": "2026-01-02 12:46:07.891396",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2026-01-02 15:56:15.842587",
+ "modified_by": "Administrator",
+ "module": "CA Practice",
+ "name": "Compliance Status Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "# ca_practice/ca_practice/report/compliance_status_report/compliance_status_report.py\nimport frappe\nfrom frappe import _\n\ndef execute(filters=None):\n    columns = get_columns()\n    data = get_data(filters)\n    return columns, data\n\ndef get_columns():\n    return [\n        {\"label\": _(\"Client\"), \"fieldname\": \"client\", \"fieldtype\": \"Link\", \"options\": \"Customer\", \"width\": 150},\n        {\"label\": _(\"Compliance Type\"), \"fieldname\": \"compliance_type\", \"width\": 150},\n        {\"label\": _(\"Due Date\"), \"fieldname\": \"due_date\", \"fieldtype\": \"Date\", \"width\": 100},\n        {\"label\": _(\"Status\"), \"fieldname\": \"status\", \"width\": 100},\n        {\"label\": _(\"Responsible\"), \"fieldname\": \"responsible\", \"width\": 120},\n        {\"label\": _(\"Days Remaining\"), \"fieldname\": \"days_remaining\", \"fieldtype\": \"Int\", \"width\": 100}\n    ]\n\ndef get_data(filters):\n    conditions = []\n    if filters.get(\"client\"):\n        conditions.append(f\"c.client = '{filters.get('client')}'\")\n    \n    query = f\"\"\"\n        SELECT \n            c.client,\n            c.compliance_type,\n            c.due_date,\n            c.status,\n            c.responsible_person,\n            DATEDIFF(c.due_date, CURDATE()) as days_remaining\n        FROM `tabCompliance` c\n        WHERE { ' AND '.join(conditions) if conditions else '1=1' }\n        ORDER BY c.due_date\n    \"\"\"\n    \n    return frappe.db.sql(query, as_dict=1)",
+ "ref_doctype": "Compliance",
+ "report_name": "Compliance Status Report",
+ "report_script": "",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ],
+ "timeout": 0
 }
