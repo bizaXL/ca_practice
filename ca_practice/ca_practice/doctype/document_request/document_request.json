@@ -1,0 +1,425 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:DR-{client_code}-{MM}-{YYYY}-{#####}",
+ "color": "#FF9800",
+ "creation": "2026-01-03 13:05:48.297859",
+ "default_view": "List",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_information_fields_section",
+  "amended_from",
+  "client",
+  "client_name",
+  "document_type",
+  "custom_document_type",
+  "description",
+  "section_request",
+  "requested_by",
+  "requested_date",
+  "column_break_qede",
+  "due_date",
+  "priority",
+  "compliance_reference",
+  "section_status",
+  "status",
+  "sent_date",
+  "document_received_date",
+  "verified_date",
+  "verified_by",
+  "attached_file",
+  "column_break_imwr",
+  "reminder_count",
+  "last_reminder_date",
+  "next_reminder_date",
+  "is_overdue",
+  "days_overdue",
+  "section_remarks",
+  "remarks",
+  "rejection_reason",
+  "custom_rejection_reason",
+  "section_communication",
+  "email_sent",
+  "portal_notification_sent",
+  "column_break_nfmv",
+  "sms_sent",
+  "whatsapp_sent",
+  "communication_log_table_section",
+  "communication_log"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_information_fields_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information Fields"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Document Request",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "client",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Client",
+   "options": "Customer",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fetch_from": "client.customer_name",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Client Name",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "document_type",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Document Type",
+   "options": "PAN Card\nAadhaar Card\nPassport\nGST Certificate\nBank Statement\nBank Cancelled Cheque\nCompany Incorporation Certificate\nMOA & AOA\nBoard Resolution\nAudited Financial Statements\nIncome Tax Returns\nForm 16/16A\nSalary Slips\nRent Agreement\nElectricity Bill\nPurchase Invoices\nSales Invoices\nTDS Certificates\nForm 26AS\nForm 16B\nForm 16C\nOther",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "depends_on": "doc.document_type == 'Other'",
+   "fieldname": "custom_document_type",
+   "fieldtype": "Data",
+   "label": "Custom Document Type",
+   "mandatory_depends_on": "doc.document_type == 'Other"
+  },
+  {
+   "columns": 1,
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description / Purpose",
+   "reqd": 1
+  },
+  {
+   "collapsible": 1,
+   "columns": 1,
+   "fieldname": "section_request",
+   "fieldtype": "Section Break",
+   "label": "Request Details"
+  },
+  {
+   "columns": 1,
+   "default": "User",
+   "fieldname": "requested_by",
+   "fieldtype": "Link",
+   "label": "Requested By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "default": "Today",
+   "fieldname": "requested_date",
+   "fieldtype": "Date",
+   "label": "Requested Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_qede",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "due_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Due Date",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "default": "Medium",
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Priority",
+   "options": "Low\nMedium\nHigh\nCritical"
+  },
+  {
+   "columns": 1,
+   "description": "Link to compliance that requires this document",
+   "fieldname": "compliance_reference",
+   "fieldtype": "Link",
+   "label": "Related Compliance",
+   "options": "Compliance"
+  },
+  {
+   "collapsible": 1,
+   "columns": 1,
+   "fieldname": "section_status",
+   "fieldtype": "Section Break",
+   "label": "Document Status"
+  },
+  {
+   "columns": 1,
+   "default": "Draft",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Status",
+   "options": "Draft\nSent to Client\nReminder Sent\nPartially Received\nReceived\nVerified\nRejected\nOverdue\nCancelled",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "sent_date",
+   "fieldtype": "Date",
+   "label": "Sent Date",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "document_received_date",
+   "fieldtype": "Date",
+   "label": "Document Received Date",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "verified_date",
+   "fieldtype": "Date",
+   "label": "Verified Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_imwr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 1,
+   "fieldname": "verified_by",
+   "fieldtype": "Link",
+   "label": "Verified By",
+   "options": "User",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "attached_file",
+   "fieldtype": "Attach",
+   "label": "Attached File",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "reminder_count",
+   "fieldtype": "Int",
+   "label": "Reminder Count",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "last_reminder_date",
+   "fieldtype": "Date",
+   "label": "Last Reminder Date",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "next_reminder_date",
+   "fieldtype": "Date",
+   "label": "Next Reminder Date",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "is_overdue",
+   "fieldtype": "Check",
+   "label": "Is Overdue",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "fieldname": "days_overdue",
+   "fieldtype": "Int",
+   "label": "Days Overdue",
+   "read_only": 1
+  },
+  {
+   "collapsible": 1,
+   "columns": 1,
+   "fieldname": "section_remarks",
+   "fieldtype": "Section Break",
+   "label": "Remarks & Rejection"
+  },
+  {
+   "columns": 1,
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks / Verification Notes"
+  },
+  {
+   "depends_on": "doc.status == 'Rejected'",
+   "fieldname": "rejection_reason",
+   "fieldtype": "Select",
+   "label": "Rejection Reason",
+   "options": "Document Expired\nPoor Quality\nIncomplete Information\nWrong Document\nOther"
+  },
+  {
+   "depends_on": "doc.rejection_reason == 'Other'",
+   "fieldname": "custom_rejection_reason",
+   "fieldtype": "Small Text",
+   "label": "Custom Rejection Reason"
+  },
+  {
+   "collapsible": 1,
+   "columns": 1,
+   "fieldname": "section_communication",
+   "fieldtype": "Section Break",
+   "label": "Communication"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "email_sent",
+   "fieldtype": "Check",
+   "label": "Email Sent",
+   "read_only": 1
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "portal_notification_sent",
+   "fieldtype": "Check",
+   "label": "Portal Notification Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_nfmv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "default": "0",
+   "fieldname": "sms_sent",
+   "fieldtype": "Check",
+   "label": "SMS Sent",
+   "read_only": 1
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "whatsapp_sent",
+   "fieldtype": "Check",
+   "label": "WhatsApp Sent",
+   "read_only": 1
+  },
+  {
+   "fieldname": "communication_log_table_section",
+   "fieldtype": "Section Break",
+   "label": "Communication Log Table"
+  },
+  {
+   "columns": 1,
+   "fieldname": "communication_log",
+   "fieldtype": "Table",
+   "label": "Communication Log",
+   "options": "Document Request Communication"
+  }
+ ],
+ "grid_page_length": 50,
+ "icon": "fa-file-text",
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [
+  {
+   "link_doctype": "Communication",
+   "link_fieldname": "reference_name"
+  },
+  {
+   "link_doctype": "File",
+   "link_fieldname": "attached_to_name"
+  }
+ ],
+ "max_attachments": 5,
+ "modified": "2026-01-04 11:37:47.039553",
+ "modified_by": "Administrator",
+ "module": "CA Practice",
+ "name": "Document Request",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "amend": 1,
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Accounts Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Auditor",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "role": "Customer",
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": " document_type,client_name,status",
+ "show_name_in_global_search": 1,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "document_type",
+ "track_seen": 1,
+ "track_views": 1
+}

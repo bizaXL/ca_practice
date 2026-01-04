@@ -20,5 +20,5 @@ scheduler_events = {
 portal_menu_items = [
     {"title": "Compliance Status", "route": "/compliance", "role": "Customer"},
     {"title": "Documents", "route": "/documents", "role": "Customer"},
-    {"title": "Profile", "route": "/profile", "role": "Customer"}
+    {"title": "Profile", "route": "/client_profile", "role": "Customer"}
 ]
